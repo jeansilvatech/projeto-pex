@@ -1,9 +1,10 @@
 import React from "react";
+import HomePage from "./home/page";
 
 export default function Home() {
   return (
     <div>
-      <h1>Projeto MACRE</h1>
+      <HomePage/>
     </div>
   );
 }

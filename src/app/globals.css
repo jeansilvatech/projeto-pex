@@ -24,3 +24,12 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 } */
+.image_principal{
+  background-image: url('../../public/assets/imageprincipal.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.menu_bar{
+  padding-right: 0 !important;
+}
