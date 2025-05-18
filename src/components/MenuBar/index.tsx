@@ -15,6 +15,8 @@ import { Instagram, WhatsApp } from '@mui/icons-material';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import logoMacre from '../../../public/logo-macre.jpg'
+import Image from 'next/image';
 
 interface Props {
   /**
@@ -38,7 +40,7 @@ export default function DrawerAppBar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        <Image src={logoMacre} width={60} height={60} alt=''/>
       </Typography>
       <Divider />
       <List>
@@ -55,6 +57,7 @@ export default function DrawerAppBar(props: Props) {
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
+  // Desktop
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -75,15 +78,15 @@ export default function DrawerAppBar(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+           <Image src={logoMacre} width={60} height={60} alt='logo MACRE'/>
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' }, padding:0 }}>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#C90456' }}>
+              <Button key={item} sx={{ color: '#C90456', marginX:1 }}>
                 {item}
               </Button>
             ))}
-            <Button className='button_social h-full' sx={{ color: '#ffff', backgroundColor:'#C90456', height:'64px', borderRadius:0, marginRight:'2px' }}>
+            <Button className='button_social h-full' sx={{ color: '#ffff', backgroundColor:'#C90456', height:'64px', borderRadius:0, marginRight:'2px' }} href='https://www.instagram.com/voluntariosmacre/' target='_blank'>
                 <Instagram/>
             </Button>
             <Button sx={{ color: '#ffff', backgroundColor:'#C90456', height:'64px', borderRadius:0 }}>
