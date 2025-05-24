@@ -15,23 +15,36 @@ import { Instagram, WhatsApp } from '@mui/icons-material';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import logoMacre from '../../../public/logo-macre.jpg'
+import logoLK from '../../../public/logolk.png'
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
+
 
 const drawerWidth = 240;
-const navItems = ['Quem Somos', 'Contatos', 'Como Posso Ajudar?'];
+const navItems = ['Quem Somos', 'Loja', 'Contato'];
 
-export default function DrawerAppBar(props: Props) {
-  const { window } = props;
+export default function DrawerAppBar() {
+  
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const router = useRouter()
+  function btnClick(btText:string){
+    switch(btText){
+      case 'Quem Somos':
+        return router.push('quem-somos')
+        break;
+      case 'Loja':
+        return window.open('https://lingeriesdaka.com.br/', '_blank')
+        break;
+      default:
+        const element = document.getElementById(btText);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          alert(`Nenhuma rota, link ou id encontrado para "${btText}"`);
+        }
+    }
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -40,13 +53,13 @@ export default function DrawerAppBar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Image src={logoMacre} width={60} height={60} alt=''/>
+        <Image src={logoLK} width={60} height={60} alt=''/>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center', color:'#C90456' }}>
+            <ListItemButton sx={{ textAlign: 'center', color:'#403d39' }}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
@@ -55,10 +68,10 @@ export default function DrawerAppBar(props: Props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
-
+  if(typeof window !== 'undefined'){
+  const container = window !== undefined ? () => window.document.body : undefined;
   // Desktop
-  return (
+ return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav" className='p-0'>
@@ -68,7 +81,7 @@ export default function DrawerAppBar(props: Props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' }, color:'#C90456' }}
+            sx={{ mr: 2, display: { sm: 'none' }, color:'#403d39' }}
             
           >
             <MenuIcon  />
@@ -78,18 +91,18 @@ export default function DrawerAppBar(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-           <Image src={logoMacre} width={60} height={60} alt='logo MACRE'/>
+           <Image src={logoLK} width={60} height={60} alt='logo MACRE'/>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#C90456', marginX:1 }}>
+              <Button key={item} sx={{ color: '#403d39', marginX:1 }} onClick={()=>{btnClick(item)}}>
                 {item}
               </Button>
             ))}
-            <Button className='button_social h-full' sx={{ color: '#ffff', backgroundColor:'#C90456', height:'64px', borderRadius:0, marginRight:'2px' }} href='https://www.instagram.com/voluntariosmacre/' target='_blank'>
+            <Button className='button_social h-full' sx={{ color: '#ffff', backgroundColor:'#403d39', height:'64px', borderRadius:0, marginRight:'2px' }} href='https://www.instagram.com/voluntariosmacre/' target='_blank'>
                 <Instagram/>
             </Button>
-            <Button sx={{ color: '#ffff', backgroundColor:'#C90456', height:'64px', borderRadius:0 }}>
+            <Button sx={{ color: '#ffff', backgroundColor:'#403d39', height:'64px', borderRadius:0 }}>
                 <WhatsApp/>
             </Button>
           </Box>
@@ -114,4 +127,7 @@ export default function DrawerAppBar(props: Props) {
       </nav>
     </Box>
   );
+}
+  
+ 
 }
