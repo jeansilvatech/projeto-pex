@@ -57,7 +57,7 @@ export default function DrawerAppBar() {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography className='flex justify-center' variant="h6" sx={{ my: 2}}>
-        <Image unoptimized src={logoLK} width={60} height={60} alt=''/>
+        <Image className='cursor-pointer' onClick={()=>{router.push('/')}} unoptimized src={logoLK} width={60} height={60} alt=''/>
       </Typography>
       <Divider />
       <List>
@@ -77,7 +77,7 @@ export default function DrawerAppBar() {
       <CssBaseline />
       <AppBar component="nav" className='p-0'>
         <Toolbar className='bg-white menu_bar' >
-          <Image className='lg:relative fixed right-2' unoptimized src={logoLK} width={60} height={60} alt='logo Lingeries da Ka'/>
+          <Image onClick={()=>{router.push('/')}} className='cursor-pointer lg:relative fixed right-2' unoptimized src={logoLK} width={60} height={60} alt='logo Lingeries da Ka'/>
           <IconButton
             color="inherit"
             aria-label="open drawer"
