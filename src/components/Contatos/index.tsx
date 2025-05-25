@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, WhatsApp } from "@mui/icons-material";
+import { Instagram, WhatsApp, LocationOn } from "@mui/icons-material";
 import logoLK from '../../../public/logolk.png'
 import Image from "next/image";
 const Contacts = ()=>{
@@ -19,6 +19,10 @@ const Contacts = ()=>{
                      <a href="https://api.whatsapp.com/send/?phone=5531995084186" target="_blank">
                         <WhatsApp fontSize="large" />
                     </a>
+                </div>
+                <div className="w-1/2 h-0.5 my-4 bg-white"></div>
+                <div>
+                    <p className="flex items-center"><LocationOn fontSize="large"/> <span className="lg:text-2xl text-sm">Ribeirão das Neves - MG</span></p>
                 </div>
                 </div>
                 <div id="contatos" className="lg:w-1/4 w-full lg:h-full h-1/4 bg-[#F2F2F2] text-[#C90456] flex justify-center items-center flex-col">
