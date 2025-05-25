@@ -50,32 +50,34 @@ export default function DrawerAppBar() {
     setMobileOpen((prevState) => !prevState);
   };
 
+  
+
+  if(typeof window !== 'undefined'){
+  const container = window !== undefined ? () => window.document.body : undefined;
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        <Image src={logoLK} width={60} height={60} alt=''/>
+      <Typography className='flex justify-center' variant="h6" sx={{ my: 2}}>
+        <Image unoptimized src={logoLK} width={60} height={60} alt=''/>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center', color:'#403d39' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item} onClick={()=>{btnClick(item)}} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
     </Box>
   );
-
-  if(typeof window !== 'undefined'){
-  const container = window !== undefined ? () => window.document.body : undefined;
   // Desktop
  return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav" className='p-0'>
         <Toolbar className='bg-white menu_bar' >
+          <Image className='lg:relative fixed right-2' unoptimized src={logoLK} width={60} height={60} alt='logo Lingeries da Ka'/>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -91,7 +93,7 @@ export default function DrawerAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-           <Image src={logoLK} width={60} height={60} alt='logo MACRE'/>
+           
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
@@ -99,10 +101,10 @@ export default function DrawerAppBar() {
                 {item}
               </Button>
             ))}
-            <Button className='button_social h-full' sx={{ color: '#ffff', backgroundColor:'#403d39', height:'64px', borderRadius:0, marginRight:'2px' }} href='https://www.instagram.com/voluntariosmacre/' target='_blank'>
+            <Button className='button_social h-full' sx={{ color: '#ffff', backgroundColor:'#403d39', height:'64px', borderRadius:0, marginRight:'2px' }} href='https://www.instagram.com/lingeries.da.ka' target='_blank'>
                 <Instagram/>
             </Button>
-            <Button sx={{ color: '#ffff', backgroundColor:'#403d39', height:'64px', borderRadius:0 }}>
+            <Button sx={{ color: '#ffff', backgroundColor:'#403d39', height:'64px', borderRadius:0 }} href='https://api.whatsapp.com/send/?phone=5531995084186' target='_blank'>
                 <WhatsApp/>
             </Button>
           </Box>
