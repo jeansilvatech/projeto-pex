@@ -1,3 +1,4 @@
+import Contacts from '@/components/Contatos';
 import Footer from '@/components/Footer';
 import DrawerAppBar from '@/components/MenuBar';
 import React from 'react';
@@ -23,6 +24,7 @@ const About = ()=>{
                 </div>
                 
         </div>
+        <Contacts/>
         <Footer/>
         </>
     )
