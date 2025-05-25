@@ -7,7 +7,7 @@ const About = ()=>{
     return(
         <>
         <DrawerAppBar/>
-        <div className='mt-[64px] w-screen h-auto flex justify-start items-center flex-col'>
+        <div className='mt-[64px] w-screen lg:h-screen h-auto flex justify-start items-center flex-col'>
             <h2 className='text-4xl uppercase m-6'>Quem somos</h2>
                 <div className='w-full h-1/2 flex justify-center items-center flex-col'>
                     <div className='lg:w-1/2 w-10/12 text-start'>
